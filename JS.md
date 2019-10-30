@@ -286,7 +286,7 @@
 
 # 01_js_browser
 
-### Dino game 만들기
+### 00_dino.html
 
 - ```javascript
   // '#id'로 id가 지정된 query select 가능 
@@ -336,4 +336,68 @@
   - https://www.w3schools.com/jsref/dom_obj_event.asp
 
 - 
+
+### 01_shopping_list.html
+
+```html
+<body>
+  <h1>My Shopping List</h1>
+  Enter a new item: <input id="item-input" type="text">
+  <button id="add-button">Add Item</button>
+  <ul id="shopping-list">
+
+  </ul>
+
+  <script>
+    const input = document.querySelector('#item-input')
+    const button = document.querySelector('#add-button')
+    const shoppingList = document.querySelector('#shopping-list')
+    
+    button.addEventListener('click', e => {
+      const itemName = input.value 
+      input.value=''
+
+      const item = document.createElement('li')
+      item.innerText = itemName
+
+      const deleteButton = document.createElement('button')
+      deleteButton.innerText = 'delete'
+      item.appendChild(deleteButton)
+
+      deleteButton.addEventListener('click', e =>{
+        item.remove()
+      })
+
+      shoppingList.appendChild(item)
+    })
+  </script>
+</body>
+```
+
+
+
+
+
+## Asynchronous 비동기 VS Synchronous 동기
+
+- http://latentflip.com/loupe/?code=JC5vbignYnV0dG9uJywgJ2NsaWNrJywgZnVuY3Rpb24gb25DbGljaygpIHsKICAgIHNldFRpbWVvdXQoZnVuY3Rpb24gdGltZXIoKSB7CiAgICAgICAgY29uc29sZS5sb2coJ1lvdSBjbGlja2VkIHRoZSBidXR0b24hJyk7ICAgIAogICAgfSwgMjAwMCk7Cn0pOwoKY29uc29sZS5sb2coIkhpISIpOwoKc2V0VGltZW91dChmdW5jdGlvbiB0aW1lb3V0KCkgewogICAgY29uc29sZS5sb2coIkNsaWNrIHRoZSBidXR0b24hIik7Cn0sIDUwMDApOwoKY29uc29sZS5sb2coIldlbGNvbWUgdG8gbG91cGUuIik7!!!PGJ1dHRvbj5DbGljayBtZSE8L2J1dHRvbj4%3D
+
+- https://nesoy.github.io/articles/2017-01/Synchronized
+- 1. **JS는 기본적으로 Synchronous한 언어이다.** 단, 몇 개의 함수를 Asynchronous하게 구현한 것이다.
+  2. **JS의 엔진은 내부적으로 Multi-thread다.** 그냥 single-thread처럼 보이는 것
+- JS는 웹브라우저 조작을 위한 언어로 시작되었기 때문에 request/Response/Call을 비동기적으로 구현  
+- 전체 파일을 확인하면서 실행하는 순서는
+  1. 위에서부터 차례대로 바로 실행되는 함수는 실행
+  2. 시간이 오래 걸리는 함수는 stack에서 관리
+  3. 병렬적이라면 위에서부터 실행 
+  4. 비동기적으로 실행되는 함수가 다수일 때, 먼저 호출되었더라도, `eventloop`가 실행중인 함수들을 계속 확인하면서 실행이 완료되었는지 확인하고, 먼저 완료된 함수부터 결과를 return 한다. 
+  5. 이러한 비동기적인 코드를 관리하기 위해서 callback 함수로 관리한다. 
+
+- 대표적인 Async함수
+
+  - `addEventListener`
+
+  - `setTimeout`
+
+    
 
