@@ -8,24 +8,22 @@
 1. 저장 + 조작(제어문)   +  (함수) + 혹은 (클래스) 
    - 저장
      - 무엇을(자료형, Data type) | 어디에(identifier 변수명, Container type) | 어떻게(`=`) | 저장하는지?
-
 2. 구현 driven 연습 / framework 연습 
 
-## 개론
+## 상식 
 
 - HTML이 뼈대, CSS가 살을 붙였다면 JS는 동작(움직임)을 위해 존재
 - Java와 Javascript는 아예 다른 언어 (관련 없다) : JS는 Browser 조작용 언어 
 - ECMA script 
   - 사실상 Javascript
-  -  Ecma 인터내셔널의 **ECMA-262** 기술 규격에 정의된 표준화된 [스크립트 프로그래밍 언어](https://ko.wikipedia.org/wiki/스크립트_프로그래밍_언어)이다. [자바스크립트](https://ko.wikipedia.org/wiki/자바스크립트)를 표준화하기 위해 만들어졌고 지금도 자바스크립트가 제일 잘 알려져 있지만, [액션스크립트](https://ko.wikipedia.org/wiki/액션스크립트)와 [J스크립트](https://ko.wikipedia.org/wiki/J스크립트) 등 다른 구현체도 포함하고 있다.
+  - Ecma 인터내셔널의 **ECMA-262** 기술 규격에 정의된 표준화된 [스크립트 프로그래밍 언어](https://ko.wikipedia.org/wiki/스크립트_프로그래밍_언어)이다. [자바스크립트](https://ko.wikipedia.org/wiki/자바스크립트)를 표준화하기 위해 만들어졌고 지금도 자바스크립트가 제일 잘 알려져 있지만, [액션스크립트](https://ko.wikipedia.org/wiki/액션스크립트)와 [J스크립트](https://ko.wikipedia.org/wiki/J스크립트) 등 다른 구현체도 포함하고 있다.
 - ECMA international
   - 정보와 통신 시스템을 위한 국제적 표준화 기구이다. 여러 Vendor들이 각자의 방식대로 언어를 만들어서 표준화가 되지 않자 ECMA에서 하나의 표준을 만든다.  ES2015(ES6)부터, 크롬/파이어폭스 등 major 벤더들이 ECMA Script의 규격을 지키며 개발하면서 점차 대중화되었다. 
-
 - Vanilla JS 
   - Jquery 등의 라이브러리를 사용하지 않은 original JS
-
 - Node JS 
   - JS는 원래 브라우저 조작언어였으나, JS Runtime : Node JS를 통해 브라우저 밖에서도 일반 프로그래밍언어처럼 JS를 사용가능하게 되었다. 하나의 언어라고 봐도 무방  
+- `eventListener` 사용 시 ArrowFunction 사용 금지
 
 ## 설치
 
@@ -44,6 +42,8 @@
     # js 실행
     node [js file name]
     ```
+
+# 00_js_intro
 
 ## 00_variable.js
 
@@ -102,7 +102,6 @@
      console.log(`내가 좋아하는 숫자는 ${MY_FAV}`) 
      ```
 
-5. 
 
 
 
@@ -335,7 +334,6 @@
 
   - https://www.w3schools.com/jsref/dom_obj_event.asp
 
-- 
 
 ### 01_shopping_list.html
 
@@ -378,10 +376,19 @@
 
 
 
-## Asynchronous 비동기 VS Synchronous 동기
 
-- http://latentflip.com/loupe/?code=JC5vbignYnV0dG9uJywgJ2NsaWNrJywgZnVuY3Rpb24gb25DbGljaygpIHsKICAgIHNldFRpbWVvdXQoZnVuY3Rpb24gdGltZXIoKSB7CiAgICAgICAgY29uc29sZS5sb2coJ1lvdSBjbGlja2VkIHRoZSBidXR0b24hJyk7ICAgIAogICAgfSwgMjAwMCk7Cn0pOwoKY29uc29sZS5sb2coIkhpISIpOwoKc2V0VGltZW91dChmdW5jdGlvbiB0aW1lb3V0KCkgewogICAgY29uc29sZS5sb2coIkNsaWNrIHRoZSBidXR0b24hIik7Cn0sIDUwMDApOwoKY29uc29sZS5sb2coIldlbGNvbWUgdG8gbG91cGUuIik7!!!PGJ1dHRvbj5DbGljayBtZSE8L2J1dHRvbj4%3D
 
+### 02_giphy.html & main.js
+
+- - 
+
+
+
+# 02_js_async
+
+### Asynchronous 비동기 VS Synchronous 동기
+
+- http://latentflip.com/loupe
 - https://nesoy.github.io/articles/2017-01/Synchronized
 - 1. **JS는 기본적으로 Synchronous한 언어이다.** 단, 몇 개의 함수를 Asynchronous하게 구현한 것이다.
   2. **JS의 엔진은 내부적으로 Multi-thread다.** 그냥 single-thread처럼 보이는 것
@@ -392,12 +399,80 @@
   3. 병렬적이라면 위에서부터 실행 
   4. 비동기적으로 실행되는 함수가 다수일 때, 먼저 호출되었더라도, `eventloop`가 실행중인 함수들을 계속 확인하면서 실행이 완료되었는지 확인하고, 먼저 완료된 함수부터 결과를 return 한다. 
   5. 이러한 비동기적인 코드를 관리하기 위해서 callback 함수로 관리한다. 
-
 - 대표적인 Async함수
-
   - `addEventListener`
-
   - `setTimeout`
+  - `XMLHttpRequest`
+  - `readFile & writeFile`
 
-    
+### 01_async_file.read.js
+
+- `fs`의 `readFile & writeFile`은 async하다. 
+- 동기적으로 사용하려면 `readFileSync & writeFileSync`를 사용가능 
+
+```javascript
+const fs = require('fs') 
+let content = ''
+fs.readFile('products.json', (err, data) => {
+	console.log('파일 읽기')
+    console.log(JSON.parse(data))
+    setTimeout(()=>{console.log('1초 기다려라')},1000)
+})
+>> '파일 읽기'
+
+content = fs.readFileSync('products.json')
+console.log(JSON.parse(content))
+console.log('끝')
+>> 'content'출력
+>> '끝'출력
+
+
+```
+
+
+
+### 02_axios.js & 00_dog.html
+
+- `Promise`: `callback`대신 사용 	
+
+
+
+
+
+
+
+# Django RECAP 좋아요 버튼 수정
+
+- `base.html`에 `axios`CDN 추가 
+- `detail.html`의 좋아요 ` 버튼에 `data-id="{{ article.pk }}"` 추가,  `id='like-button'`지정 
+- `detail.html`의 `<script>`에서 button에 `addEventListener`
+- `article.pk`는 `const articleId = e.target.dataset.id` 처럼 `target`을 이용해 가져온다.
+
+```javascript
+// (페이지 로드 없이 제자리에서 로드한다.)
+// 좋아요 버튼을 클릭하면, 좋아요 DB를 업데이트하고, 버튼을 바꾼다. (EventListener사용))
+const likeButton = document.querySelector('#like-button')
+
+likeButton.addEventListener('click', function(e){
+  // 좋아요 DB를 변경 (like함수) == articles/<aricle:pk>/like로 요청보냄 
+  const articleId = e.target.dataset.id
+  axios.get(`/articles/${articleId}/like/`)
+      .then(response => {
+        document.querySelector('#like-count').innerText = response.data.count
+        if (response.data.liked){
+          // e.target.className은 안의 내용을 전부 갈아엎어버리기 때문에 안쓰는게 좋다. 
+          
+          console.log(e.target.classList)
+          e.target.classList.remove('btn-primary')
+          e.target.classList.add('btn-outline-primary')
+          e.target.innerText = 'Unlike'
+        } else {
+          console.log(e.target.classList)
+          e.target.classList.remove('btn-outline-primary')
+          e.target.classList.add('btn-primary')
+          e.target.innerText = 'Like'
+        }
+      })
+})
+```
 

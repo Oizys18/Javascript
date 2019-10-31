@@ -47,20 +47,18 @@ const products ={
 }
 
 // JSON.stringify() : object -> JSON(string)   
-
 // console.log(JSON.stringify(products))
 myJson = JSON.stringify(products)
 // callback 함수를 넣어야함.. (에러핸들링) //// 비동기적 파일라이팅 but 넘 귀찮
 // fs.writeFile('products.json', myJson, err=>{})
 
-// writeFileSync를 사용하면 동기적 파일 라이팅
+// writeFileSync를 사용하면 동기적 파일 라이팅, 콜백 없다 
 fs.writeFileSync('products2.json', myJson)
 
 
 
 
 // JSON.parse() :  JSON(string) -> object 
-
 const myObject = JSON.parse(myJson)
 console.log(myObject)
 console.log(typeof myObject)

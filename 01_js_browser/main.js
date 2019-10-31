@@ -21,13 +21,10 @@ const searchAndPush = keyword => {
 
     
     // 환경변수 설정 어떻게 하는지 모르겠다.........................................
-    const API_KEY = 
-
-
+    const API_KEY = 'Fy3grJjeYphUvRehfcbzlqepTlDsSAqc'
 
     // URL + ?q= + '검색어' + '&api_key=' + API_KEY
     const URL = `http://api.giphy.com/v1/gifs/search?q=${keyword}&api_key=${API_KEY}`
-
 
     // XMLHttpRequest(): python의 requests.get(url) 과 같은  기능 해준다.
     const GiphyAPICall = new XMLHttpRequest()
@@ -53,7 +50,6 @@ const searchAndPush = keyword => {
             resultArea.appendChild(elem)
             elem.className = 'container-large'
         });
-
 
     }
 }
