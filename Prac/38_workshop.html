@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <title>CATDOG</title>
+</head>
+
+<body>
+  <div id='app'>
+    <select id='selects' v-model='nDogs'>
+    </select>
+    <button id="getbutton" @click='GetDog'>Make {{nDogs}} cute dogs rain on me!</button>
+    <div id='imgcon' class='container'></div> 
+  </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+  const selects = document.querySelector('#selects')
+  for (i = 0; i < 51; i++) {
+    let elem = document.createElement('option')
+      elem.innerText = i
+      selects.appendChild(elem)
+    }
+  const app = new Vue({
+    el: '#app',
+    data: {
+      nDogs: 0,
+    },
+    methods:{
+      GetDog(){
+        const imgcon = document.querySelector('#imgcon') 
+        imgcon.innerHTML=''
+        axios.get(`https://dog.ceo/api/breeds/image/random/${this.nDogs}`)
+          .then(result =>{
+            result.data.message.forEach(element => {
+              console.log(element)
+              let img = document.createElement('img')
+              img.src = element
+              img.style.height='200px'
+              img.style.width='200px'
+              imgcon.appendChild(img)
+            });
+          })
+      }
+    }
+  })
+</script>
+
+</html>
