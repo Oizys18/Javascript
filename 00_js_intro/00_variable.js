@@ -24,3 +24,10 @@ console.log(`내가 좋아하는 숫자는 ${MY_FAV}`)
 // console.log(MY_FAV)
 
 
+
+
+
+const hi=(e=>{
+    console.log('hi')
+}) 
+hi()
